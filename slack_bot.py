@@ -1,5 +1,5 @@
 import time
-import RPI.GPIP as GPIO
+import RPi.GPIO as GPIO
 import os
 from slackclient import SlackClient
 
@@ -16,10 +16,15 @@ p = GPIO.PWM(7,50)
 p.start(7.5)
 
 def servo():
-    p.ChangeDutyCycle(7.5)
-    time.sleep(1)
-    p.ChangeDutyCycle(2.5)
-    time.sleep(1)
+    try:
+        p.ChangeDutyCycle(7.5)
+        time.sleep(1)
+        p.ChangeDutyCycle(2.5)
+        time.sleep(1)
+    except KeyboardInterrupt:
+        p.stop()
+
+	GPIO.cleanup() 
 
 def main():
     # Creates a slackclient instance with bots token
