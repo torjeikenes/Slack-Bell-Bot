@@ -16,16 +16,10 @@ p = GPIO.PWM(7,50)
 p.start(7.5)
 
 def servo():
-    try:
         p.ChangeDutyCycle(7.5)
         time.sleep(1)
         p.ChangeDutyCycle(2.5)
         time.sleep(1)
-
-    except KeyboardInterrupt:
-        p.stop()
-
-	GPIO.cleanup() 
 
 def main():
     # Creates a slackclient instance with bots token
@@ -49,6 +43,10 @@ def main():
             # Sleeps for one second
             time.sleep(1)
 
+try:
+    if __name__ == '__main__':
+        main()
+except KeyboardInterrupt:
+    p.stop()
 
-if __name__ == '__main__':
-    main()
+    GPIO.cleanup()
