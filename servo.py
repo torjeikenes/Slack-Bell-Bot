@@ -1,4 +1,4 @@
-import RPI.GPIP as GPIO
+import RPi.GPIO as GPIO
 import time
 
 GPIO.setmode(GPIO.BOARD)
@@ -9,15 +9,13 @@ p = GPIO.PWM(7,50)
 p.start(7.5)
 
 try:
-    while True:
-        p.ChangeDutyCycle(7.5)
-        time.sleep(1)
-        p.ChangeDutyCycle(12.5)
-        time.sleep(1)
-        p.ChangeDutyCycle(2.5)
-        time.sleep(1)
+        while True:
+                p.ChangeDutyCycle(5)
+                time.sleep(1)
+                #p.ChangeDutyCycle(12.5)
+                #time.sleep(1)
+                p.ChangeDutyCycle(12.5)
+                time.sleep(1)
 
 except KeyboardInterrupt:
-        p.stop()
-
         GPIO.cleanup()
