@@ -1,4 +1,5 @@
 import time
+import RPI.GPIP as GPIO
 import os
 from slackclient import SlackClient
 
@@ -6,6 +7,19 @@ from slackclient import SlackClient
 BOT_TOKEN = os.environ.get('SLACK_BOT_TOKEN')
 # What channel your bot uses
 CHANNEL_NAME = "general"
+
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(7,GPIO.OUT)
+
+p = GPIO.PWM(7,50)
+p.start(7.5)
+
+def servo():
+    p.ChangeDutyCycle(7.5)
+    time.sleep(1)
+    p.ChangeDutyCycle(2.5)
+    time.sleep(1)
 
 def main():
     # Creates a slackclient instance with bots token
@@ -24,6 +38,7 @@ def main():
                 # If someone types ring, the bot will post a bell
                 if(message == "ring"):
                     sc.rtm_send_message(CHANNEL_NAME, ":bell:")
+                    servo()
                     
             # Sleeps for one second
             time.sleep(1)
