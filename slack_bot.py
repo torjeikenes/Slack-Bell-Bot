@@ -46,7 +46,7 @@ def main():
                 if not message or not user:
                     continue
                 # If someone types ring, the bot will post a bell
-                if(message.lower() == "ring"):
+                if(message.lower().strip() == "ring"):
                     sc.rtm_send_message(CHANNEL_NAME, ":bell:")
                     servo() 
             # Sleeps for one second
