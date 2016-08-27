@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import time
 import RPi.GPIO as GPIO
 import os
@@ -52,6 +53,6 @@ def main():
             # Sleeps for one second
             time.sleep(1)
 
-
-if __name__ == '__main__':
-    main()
+while True:
+    if __name__ == '__main__':
+        main()
