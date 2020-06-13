@@ -1,5 +1,5 @@
 gpio==0.1.2
-requests==2.10.0
+requests==2.20.0
 six==1.10.0
 slackclient==1.0.0
 websocket-client==0.37.0
