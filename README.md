@@ -1,4 +1,6 @@
-#Slack Bell
+# Slack Bell
+Slack bot that rings a bell when "ring" is typed in a slack channel
+
 
 ## What you need
 To use the bell you need the following:
